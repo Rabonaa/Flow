@@ -1,15 +1,15 @@
 
-USE CountIT;
+USE flow;
 -- ==========================================
 -- INSERTION DES UTILISATEURS
 -- ==========================================
 
 INSERT INTO UTILISATEUR VALUES
-(1, 'admin', 'admin_countit', 'admin@countit.test', 'demo_hash_001', '2026-09-01'),
-(2, 'user', 'alex', 'alex@countit.test', 'demo_hash_002', '2026-09-10'),
-(3, 'user', 'emma', 'emma@countit.test', 'demo_hash_003', '2026-09-15'),
-(4, 'user', 'lucas', 'lucas@countit.test', 'demo_hash_004', '2026-10-01'),
-(5, 'user', 'sarah', 'sarah@countit.test', 'demo_hash_005', '2026-10-12');
+(1, 'admin', 'admin_flow', 'admin@flow.test', 'demo_hash_001', '2026-09-01'),
+(2, 'user', 'alex', 'alex@flow.test', 'demo_hash_002', '2026-09-10'),
+(3, 'user', 'emma', 'emma@flow.test', 'demo_hash_003', '2026-09-15'),
+(4, 'user', 'lucas', 'lucas@flow.test', 'demo_hash_004', '2026-10-01'),
+(5, 'user', 'sarah', 'sarah@flow.test', 'demo_hash_005', '2026-10-12');
 
 -- ==========================================
 -- INSERTION DES CATEGORIES
