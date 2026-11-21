@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionManager {
-    private static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/?user=user";
+    private static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/flow";
     private static final String DB_USER = "user";
     private static final String DB_PASSWORD = "Password123";
 

@@ -43,7 +43,7 @@ public class Utilisateur {
                 + "role : " + role + "\n"
                 + "pseudo : " + pseudo + "\n"
                 + "email : " + email + "\n"
-                + "mdp : " + mdp + "\n"
+                + "mdp : ...." + "\n"
 
                 + "date d inscription : " + dateInscription + "\n";
     }
