@@ -36,7 +36,7 @@ public class TestModel {
         );
         System.out.println(transaction1);
 
-        Classer_depense affectation1 = new Classer_depense(
+        ClasserDepense affectation1 = new ClasserDepense(
                 1, 1, new BigDecimal("45.90")
         );
         System.out.println(affectation1);

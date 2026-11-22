@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class TestConnection {
     public static void main(String[] args){
         System.out.println("Tentative de connexion à la bdd");
-        try (Connection conn = ConnectionManager.getConnection()){
+        try (Connection conn = ConnectionManager.getAuthConnection()){
             System.out.println("Connexion réussie.");
             System.out.println("Catalogue : " + conn.getCatalog());
             System.out.println("Auto-commit actuel : " + conn.getAutoCommit());

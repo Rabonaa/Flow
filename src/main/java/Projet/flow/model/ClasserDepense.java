@@ -1,13 +1,13 @@
 package Projet.flow.model;
 import java.math.BigDecimal;
 
-public class Classer_depense {
+public class ClasserDepense {
     private int idTransaction;
     private int idCategorie;
     private BigDecimal montantAffecte;
 
-    public Classer_depense(){};
-    public Classer_depense(int idTransaction, int idCategorie, BigDecimal montantAffecte){
+    public ClasserDepense(){};
+    public ClasserDepense(int idTransaction, int idCategorie, BigDecimal montantAffecte){
         this.idTransaction = idTransaction;
         this.idCategorie = idCategorie;
         this.montantAffecte = montantAffecte;

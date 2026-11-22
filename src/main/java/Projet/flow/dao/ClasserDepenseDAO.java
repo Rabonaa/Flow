@@ -1,27 +1,24 @@
 package Projet.flow.dao;
 
-import Projet.flow.model.Classer_depense;
+import Projet.flow.model.ClasserDepense;
+
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Ventilation d'une dépense existante sur les catégories.
+ * Règles (vérifiées par trigger) : dépense uniquement, total <= montant.
+ */
 public interface ClasserDepenseDAO {
 
-    boolean affecter(Classer_depense affectation)
-            throws SQLException;
+    void affecter(ClasserDepense affectation) throws SQLException;
 
-    boolean modifierAffectation(Classer_depense affectation)
-            throws SQLException;
+    void modifierAffectation(ClasserDepense affectation) throws SQLException;
 
-    boolean supprimerAffectation(
-            int idTransaction,
-            int idCategorie
-    ) throws SQLException;
+    void supprimerAffectation(int idTransaction, int idCategorie) throws SQLException;
 
-    List<Classer_depense> listerParTransaction(
-            int idTransaction
-    ) throws SQLException;
+    List<ClasserDepense> listerParTransaction(int idTransaction) throws SQLException;
 
-    BigDecimal calculerTotalAffecte(int idTransaction)
-            throws SQLException;
+    BigDecimal calculerTotalAffecte(int idTransaction) throws SQLException;
 }
