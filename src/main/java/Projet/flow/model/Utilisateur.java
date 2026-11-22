@@ -21,6 +21,14 @@ public class Utilisateur {
         this.mdp = mdp;
         this.dateInscription = dateInscription;
     }
+    public Utilisateur(String role, String pseudo, String email,
+                       String mdp, LocalDate dateInscription){
+        this.role = role;
+        this.pseudo = pseudo;
+        this.email = email;
+        this.mdp = mdp;
+        this.dateInscription = dateInscription;
+    }
     //Getters
     public int getIdUtilisateur(){return idUtilisateur;}
     public String getRole(){return role;}

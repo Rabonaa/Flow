@@ -9,6 +9,9 @@ public class Source {
         this.idSource = idSource;
         this.nom = nom;
     }
+    public Source(String nom){
+        this.nom = nom;
+    }
 
     //Getters
     public int getIdSource(){return idSource;}

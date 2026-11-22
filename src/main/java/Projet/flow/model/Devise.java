@@ -4,10 +4,13 @@ public class Devise {
     private int idDevise;
     private String code;
 
-    //Constructeur
+    //Constructeurs
     public Devise(){}
     public Devise(int idDevise, String code){
         this.idDevise = idDevise;
+        this.code = code;
+    }
+    public Devise(String code){
         this.code = code;
     }
 

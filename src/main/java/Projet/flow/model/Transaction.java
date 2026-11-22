@@ -10,12 +10,12 @@ public class Transaction {
     private BigDecimal montant;
     private LocalDate date;
     private int idCompte;
-    private int idSource;
+    private Integer idSource;
 
     //Constructeurs
     public Transaction(){};
     public Transaction(int idTransaction, String nom, String description, String type,
-                       BigDecimal montant, LocalDate date, int idCompte, int idSource){
+                       BigDecimal montant, LocalDate date, int idCompte, Integer idSource){
         this.idTransaction = idTransaction;
         this.nom = nom;
         this.description = description;
@@ -24,6 +24,26 @@ public class Transaction {
         this.date = date;
         this.idCompte = idCompte;
         this.idSource = idSource;
+    }
+    public Transaction(String nom, String description, String type,
+                       BigDecimal montant, LocalDate date, int idCompte, Integer idSource){
+        this.nom = nom;
+        this.description = description;
+        this.type = type;
+        this.montant = montant;
+        this.date = date;
+        this.idCompte = idCompte;
+        this.idSource = idSource;
+    }
+    public Transaction(String nom, String description, String type,
+                       BigDecimal montant, LocalDate date, int idCompte){
+        this.nom = nom;
+        this.description = description;
+        this.type = type;
+        this.montant = montant;
+        this.date = date;
+        this.idCompte = idCompte;
+        this.idSource = null;
     }
 
     //Getters
@@ -34,16 +54,17 @@ public class Transaction {
     public BigDecimal getMontant(){return montant;}
     public LocalDate getDate(){return date;}
     public int getIdCompte(){return idCompte;}
-    public int getIdSource(){return idSource;}
+    public Integer getIdSource(){return idSource;}
 
     //Setters
     public void setIdTransaction(int idTransaction){this.idTransaction = idTransaction;}
     public void setNom(String nom){this.nom = nom;}
+    public void setDescription(String description) {this.description = description;}
     public void setType(String type){this.type = type;}
     public void setMontant(BigDecimal montant){this.montant = montant;}
     public void setDate(LocalDate date){this.date = date;}
     public void setIdCompte(int idCompte){this.idCompte = idCompte;}
-    public void setIdSource(int idSource){this.idSource = idSource;}
+    public void setIdSource(Integer idSource){this.idSource = idSource;}
 
     //toString
     public String toString(){

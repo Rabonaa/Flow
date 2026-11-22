@@ -10,6 +10,9 @@ public class Categorie {
         this.idCategorie = idCategorie;
         this.nom = nom;
     }
+    public Categorie( String nom){
+        this.nom = nom;
+    }
 
     //Getters
     public int getIdCategorie(){return idCategorie;}

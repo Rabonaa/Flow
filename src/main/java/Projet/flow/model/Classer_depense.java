@@ -21,6 +21,7 @@ public class Classer_depense {
     //Setters
     public void setIdTransaction(int idTransaction){this.idTransaction = idTransaction;}
     public void setIdCategorie(int idCategorie){this.idCategorie = idCategorie;}
+    public void setMontantAffecte(BigDecimal montantAffecte) {this.montantAffecte = montantAffecte;}
 
     //toString()
     @Override

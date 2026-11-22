@@ -10,10 +10,17 @@ public class Compte {
     private int idUtilisateur;
 
 
-    //Constructeur
+    //Constructeurs
     public Compte(){};
     public Compte(int idCompte, String nom, String type, BigDecimal montantInitial, int idDevise, int idUtilisateur){
         this.idCompte = idCompte;
+        this.nom = nom;
+        this.type = type;
+        this.montantInitial = montantInitial;
+        this.idDevise = idDevise;
+        this.idUtilisateur = idUtilisateur;
+    }
+    public Compte( String nom, String type, BigDecimal montantInitial, int idDevise, int idUtilisateur){
         this.nom = nom;
         this.type = type;
         this.montantInitial = montantInitial;
