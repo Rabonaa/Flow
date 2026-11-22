@@ -7,7 +7,6 @@ import java.sql.SQLException;
 
 public class TestConnection {
     public static void main(String[] args){
-        System.out.println("Hello world");
         System.out.println("Tentative de connexion à la bdd");
         try (Connection conn = ConnectionManager.getConnection()){
             System.out.println("Connexion réussie.");
