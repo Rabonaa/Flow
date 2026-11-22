@@ -16,7 +16,7 @@ public class Classer_depense {
     //Getters
     public int getIdTransaction(){return idTransaction;}
     public int getIdCategorie(){return idCategorie;}
-    public BigDecimal getMontantAffectee(){return montantAffecte;}
+    public BigDecimal getMontantAffecte(){return montantAffecte;}
 
     //Setters
     public void setIdTransaction(int idTransaction){this.idTransaction = idTransaction;}
