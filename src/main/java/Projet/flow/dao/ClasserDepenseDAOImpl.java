@@ -80,7 +80,7 @@ public class ClasserDepenseDAOImpl extends AbstractDAO implements ClasserDepense
 
         String sql = """
                 SELECT id_transaction, id_categorie, montant_affecte
-                FROM v_mes_ventilations
+                FROM v_mes_repartitions
                 WHERE id_transaction = ?
                 ORDER BY montant_affecte DESC
                 """;
@@ -107,7 +107,7 @@ public class ClasserDepenseDAOImpl extends AbstractDAO implements ClasserDepense
 
         String sql = """
                 SELECT COALESCE(SUM(montant_affecte), 0) AS total
-                FROM v_mes_ventilations
+                FROM v_mes_repartitions
                 WHERE id_transaction = ?
                 """;
 

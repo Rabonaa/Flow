@@ -42,10 +42,10 @@ public class TransactionDAOImpl extends AbstractDAO implements TransactionDAO {
      * [{"id_categorie":1,"montant":61.00}, ...] pour JSON_TABLE dans la procédure.
      * Que des nombres : aucun risque d'injection.
      */
-    private static String versJson(List<ClasserDepense> ventilations) {
+    private static String versJson(List<ClasserDepense> repartitions) {
         StringJoiner json = new StringJoiner(",", "[", "]");
-        if (ventilations != null) {
-            for (ClasserDepense v : ventilations) {
+        if (repartitions != null) {
+            for (ClasserDepense v : repartitions) {
                 json.add("{\"id_categorie\":" + v.getIdCategorie()
                         + ",\"montant\":" + v.getMontantAffecte().toPlainString() + "}");
             }
@@ -60,22 +60,21 @@ public class TransactionDAOImpl extends AbstractDAO implements TransactionDAO {
             throw new IllegalArgumentException("Un revenu doit avoir une source");
         }
 
-        String sql = "{CALL enregistrer_revenu(?, ?, ?, ?, ?, ?, ?)}";
+        String sql = "CALL enregistrer_revenu(?, ?, ?, ?, ?, ?, @id_transaction)";
 
-        try (Connection conn = connexion();
-             CallableStatement stmt = conn.prepareCall(sql)) {
+        try (Connection conn = connexion()) {
 
-            stmt.setInt(1, revenu.getIdCompte());
-            stmt.setString(2, revenu.getNom());
-            stmt.setString(3, revenu.getDescription());
-            stmt.setBigDecimal(4, revenu.getMontant());
-            stmt.setDate(5, versDate(revenu.getDate()));
-            stmt.setInt(6, revenu.getIdSource());
-            stmt.registerOutParameter(7, Types.INTEGER);
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setInt(1, revenu.getIdCompte());
+                stmt.setString(2, revenu.getNom());
+                stmt.setString(3, revenu.getDescription());
+                stmt.setBigDecimal(4, revenu.getMontant());
+                stmt.setDate(5, versDate(revenu.getDate()));
+                stmt.setInt(6, revenu.getIdSource());
+                stmt.execute();
+            }
 
-            stmt.execute();
-
-            int id = stmt.getInt(7);
+            int id = lireIdCree(conn);
             revenu.setIdTransaction(id);
             revenu.setType("REVENU");
             return id;
@@ -86,25 +85,24 @@ public class TransactionDAOImpl extends AbstractDAO implements TransactionDAO {
     }
 
     @Override
-    public int creerDepense(Transaction depense, List<ClasserDepense> ventilations)
+    public int creerDepense(Transaction depense, List<ClasserDepense> repartitions)
             throws SQLException {
 
-        String sql = "{CALL enregistrer_depense(?, ?, ?, ?, ?, ?, ?)}";
+        String sql = "CALL enregistrer_depense(?, ?, ?, ?, ?, ?, @id_transaction)";
 
-        try (Connection conn = connexion();
-             CallableStatement stmt = conn.prepareCall(sql)) {
+        try (Connection conn = connexion()) {
 
-            stmt.setInt(1, depense.getIdCompte());
-            stmt.setString(2, depense.getNom());
-            stmt.setString(3, depense.getDescription());
-            stmt.setBigDecimal(4, depense.getMontant());
-            stmt.setDate(5, versDate(depense.getDate()));
-            stmt.setString(6, versJson(ventilations));
-            stmt.registerOutParameter(7, Types.INTEGER);
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setInt(1, depense.getIdCompte());
+                stmt.setString(2, depense.getNom());
+                stmt.setString(3, depense.getDescription());
+                stmt.setBigDecimal(4, depense.getMontant());
+                stmt.setDate(5, versDate(depense.getDate()));
+                stmt.setString(6, versJson(repartitions));
+                stmt.execute();
+            }
 
-            stmt.execute();
-
-            int id = stmt.getInt(7);
+            int id = lireIdCree(conn);
             depense.setIdTransaction(id);
             depense.setType("DEPENSE");
             depense.setIdSource(null);
@@ -112,6 +110,14 @@ public class TransactionDAOImpl extends AbstractDAO implements TransactionDAO {
 
         } catch (SQLException e) {
             throw traduire(e, null, null);
+        }
+    }
+
+    private static int lireIdCree(Connection conn) throws SQLException {
+        try (PreparedStatement stmt = conn.prepareStatement("SELECT @id_transaction");
+             ResultSet rs = stmt.executeQuery()) {
+            rs.next();
+            return rs.getInt(1);
         }
     }
 

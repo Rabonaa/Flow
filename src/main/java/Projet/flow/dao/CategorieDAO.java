@@ -16,6 +16,6 @@ public interface CategorieDAO {
 
     boolean modifier(Categorie categorie) throws SQLException;
 
-    /** Refusé si la catégorie est utilisée dans une ventilation. */
+    /** Refusé si la catégorie est utilisée dans une repartition. */
     boolean supprimer(int idCategorie) throws SQLException;
 }

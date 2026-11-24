@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- * Ventilation d'une dépense existante sur les catégories.
+ * Repartition d'une dépense existante sur les catégories.
  * Règles (vérifiées par trigger) : dépense uniquement, total <= montant.
  */
 public interface ClasserDepenseDAO {

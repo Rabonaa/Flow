@@ -60,11 +60,11 @@ public class TableauBordDAOImpl extends AbstractDAO implements TableauBordDAO {
                        SUM(v.montant_affecte) AS total,
                        ROUND(100 * SUM(v.montant_affecte) / (
                            SELECT SUM(v2.montant_affecte)
-                           FROM v_mes_ventilations v2
+                           FROM v_mes_repartitions v2
                            JOIN v_mes_transactions t2 ON t2.id_transaction = v2.id_transaction
                            WHERE t2.date_transaction >= DATE_SUB(CURRENT_DATE, INTERVAL ? MONTH)
                        ), 1) AS part_pourcent
-                FROM v_mes_ventilations v
+                FROM v_mes_repartitions v
                 JOIN v_mes_transactions t ON t.id_transaction = v.id_transaction
                 JOIN CATEGORIE cat ON cat.id_categorie = v.id_categorie
                 WHERE t.date_transaction >= DATE_SUB(CURRENT_DATE, INTERVAL ? MONTH)

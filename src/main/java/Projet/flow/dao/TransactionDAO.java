@@ -16,8 +16,8 @@ public interface TransactionDAO {
     /** La source est obligatoire. */
     int creerRevenu(Transaction revenu) throws SQLException;
 
-    /** Ventilation facultative (liste vide = dépense non classée). Tout ou rien. */
-    int creerDepense(Transaction depense, List<ClasserDepense> ventilations) throws SQLException;
+    /** Repartition facultative (liste vide = dépense non classée). Tout ou rien. */
+    int creerDepense(Transaction depense, List<ClasserDepense> repartitions) throws SQLException;
 
     /** null si absente ou pas à l'utilisateur connecté. */
     Transaction trouverParId(int idTransaction) throws SQLException;
@@ -31,6 +31,6 @@ public interface TransactionDAO {
     /** Compte et type non modifiables. Lève une erreur si la transaction est introuvable. */
     void modifier(Transaction transaction) throws SQLException;
 
-    /** Supprime aussi ses ventilations. Lève une erreur si la transaction est introuvable. */
+    /** Supprime aussi ses repartitions. Lève une erreur si la transaction est introuvable. */
     void supprimer(int idTransaction) throws SQLException;
 }
